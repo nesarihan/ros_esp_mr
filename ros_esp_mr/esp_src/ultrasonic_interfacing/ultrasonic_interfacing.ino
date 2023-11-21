@@ -8,7 +8,7 @@ const int echo_pin = 4;
 #define SPEED_OF_SOUND 0.034
 
 long duration;
-int16_t distance_in_cm;
+int distance_in_cm;
 
 ros::NodeHandle  nh;
 
