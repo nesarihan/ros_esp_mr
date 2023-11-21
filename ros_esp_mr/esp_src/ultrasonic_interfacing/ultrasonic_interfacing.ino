@@ -31,7 +31,7 @@ void loop(){
     digitalWrite(trig_pin, LOW);
     
     duration = pulseIn(echo_pin, HIGH);
-    distance_in_cm = (duration* SPEED_OF_SOUND)/2;
+    distance_in_cm = (duration * SPEED_OF_SOUND)/2;
     ultrasonic_node.publish(&ultrasonic_msg);
     nh.spinOnce();
     delay(1);
