@@ -12,7 +12,7 @@ float distance_in_cm;
 
 ros::NodeHandle  nh;
 
-std_msgs::Int16 ultrasonic_msg
+std_msgs::Int16 ultrasonic_msg;
 ros::Publisher ultrasonic_node("ultrasonic_values", &ultrasonic_msg);
 
 void setup(){
@@ -32,7 +32,7 @@ void loop(){
     
     duration = pulseIn(echo_pin, HIGH);
     distance_in_cm = (duration* SPEED_OF_SOUND)/2;
-    ultrasonic_node.publish(&ultrasonic_msg)
+    ultrasonic_node.publish(&ultrasonic_msg);
     nh.spinOnce();
     delay(1);
 }
