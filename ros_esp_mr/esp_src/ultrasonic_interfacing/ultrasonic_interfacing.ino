@@ -1,6 +1,6 @@
 
 #include <ros.h>
-#include <std_msgs/Int16.h>
+#include <std_msgs/Float32.h>
 
 #define trig_pin 2
 #define echo_pin 4
@@ -13,7 +13,7 @@ float distance_in_cm;
 
 ros::NodeHandle  nh;
 
-std_msgs::Int16 ultrasonic_msg;
+std_msgs::Float32 ultrasonic_msg;
 ros::Publisher ultrasonic_node("ultrasonic_values", &ultrasonic_msg);
 
 void setup(){
