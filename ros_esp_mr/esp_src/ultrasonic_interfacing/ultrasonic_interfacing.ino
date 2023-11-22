@@ -1,14 +1,15 @@
 
 #include <ros.h>
 #include <std_msgs/Int16.h>
-const int trig_pin = 2;
-const int echo_pin = 4;
+
+#define trig_pin 2
+#define echo_pin 4
 
 
 #define SPEED_OF_SOUND 0.034
 
 long duration;
-int distance_in_cm;
+float distance_in_cm;
 
 ros::NodeHandle  nh;
 
@@ -31,8 +32,9 @@ void loop(){
     digitalWrite(trig_pin, LOW);
     
     duration = pulseIn(echo_pin, HIGH);
-    distance_in_cm = (duration* SPEED_OF_SOUND)/2;
+    distance_in_cm = (duration * SPEED_OF_SOUND)/2;
+    ultrasonic_msg.data=distance_in_cm;
     ultrasonic_node.publish(&ultrasonic_msg);
     nh.spinOnce();
-    delay(1);
+    delay(500);
 }
