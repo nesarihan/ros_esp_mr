@@ -29,8 +29,8 @@ void pin_def(){
 }
 
 void cmd_vel_to_pwm(float x, float z){
-    left_wheel= (x+z)/2;
-    right_wheel= (x-z)/2;
+    left_wheel= (x-z)/2;
+    right_wheel= (x+z)/2;
     direction();
     speed();
     if (x==0.0 & z==0.0){
