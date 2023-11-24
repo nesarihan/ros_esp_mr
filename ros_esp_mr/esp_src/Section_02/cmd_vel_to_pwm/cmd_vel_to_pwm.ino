@@ -1,12 +1,12 @@
 /*
 */
 
-#define motor_r_pwm 12
-#define motor_r_a 14 
-#define motor_r_b 27
-#define motor_l_pwm 33
-#define motor_l_a 25
-#define motor_l_b 26
+#define motor_r_pwm 8
+#define motor_r_a 4 
+#define motor_r_b 5
+#define motor_l_pwm 9
+#define motor_l_a 6
+#define motor_l_b 7
 int val=175;
 
 
