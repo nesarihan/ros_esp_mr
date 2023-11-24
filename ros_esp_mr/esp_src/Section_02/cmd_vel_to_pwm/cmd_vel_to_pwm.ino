@@ -8,6 +8,8 @@
 #define motor_l_a 6
 #define motor_l_b 7
 int val=175;
+float left_wheel;
+float right_wheel;
 
 
 void setup() {
@@ -26,60 +28,35 @@ void pin_def(){
     pinMode(motor_l_b, OUTPUT);
 }
 
+void cmd_vel_to_pwm(float x, float z){
+    left_wheel= (x+z)/2;
+    right_wheel= (x-z)/2;
+    direction();
+    speed();
+    if (x==0.0 & z==0.0){
+        stop();
+    }
+    Serial.print(left_wheel); Serial.print(" / "); Serial.println(right_wheel);
+}
+
+
+
 void loop(){
-    move_forward();
-    delay(1000);
-    move_backward();
-    delay(1000);
-    move_left();
-    delay(1000);
-    move_right();
-    delay(1000);
-}
-
-void move_forward(){
-    Serial.println("Moving Forward");
-
-    digitalWrite(motor_r_a, HIGH);
-    digitalWrite(motor_r_b, LOW);
-    digitalWrite(motor_l_a, HIGH);
-    digitalWrite(motor_l_b, LOW);
-    analogWrite(motor_r_pwm, val);
-    analogWrite(motor_l_pwm, val);
 
 }
 
-void move_backward(){
-    Serial.println("Moving Backwards");
+void direction(){
+    digitalWrite(motor_l_a, left_wheel > 0);
+    digitalWrite(motor_l_b, left_wheel < 0);
+    digitalWrite(motor_r_a, right_wheel > 0);
+    digitalWrite(motor_r_b, right_wheel < 0);
+}
 
-    digitalWrite(motor_r_a, LOW);
-    digitalWrite(motor_r_b, HIGH);
-    digitalWrite(motor_l_a, LOW);
-    digitalWrite(motor_l_b, HIGH);
+void speed(){
     analogWrite(motor_r_pwm, val);
     analogWrite(motor_l_pwm, val);
 }
 
-void move_left(){
-    Serial.println("Moving Left");
-    digitalWrite(motor_r_a, HIGH);
-    digitalWrite(motor_r_b, LOW);
-    digitalWrite(motor_l_a, LOW);
-    digitalWrite(motor_l_b, LOW);
-    analogWrite(motor_r_pwm, val);
-    analogWrite(motor_l_pwm, 0);
-}
-
-void move_right(){
-    Serial.println("Moving Right");
-    
-    digitalWrite(motor_r_a, LOW);
-    digitalWrite(motor_r_b, LOW);
-    digitalWrite(motor_l_a, HIGH);
-    digitalWrite(motor_l_b, LOW);
-    analogWrite(motor_r_pwm, 0);
-    analogWrite(motor_l_pwm, val);
-}
 void stop(){
     analogWrite(motor_r_pwm, 0);
     analogWrite(motor_l_pwm, 0);
