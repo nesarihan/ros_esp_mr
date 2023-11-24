@@ -39,10 +39,15 @@ void cmd_vel_to_pwm(float x, float z){
     Serial.print(left_wheel); Serial.print(" / "); Serial.println(right_wheel);
 }
 
-
-
 void loop(){
-
+    Serial.println("Forward");
+    cmd_vel_to_pwm(0.5, 0.0);
+    Serial.println("Backwards");
+    cmd_vel_to_pwm(-0.5, 0.0);
+    Serial.println("Left");
+    cmd_vel_to_pwm(0.0, 1.0);
+    Serial.println("Right");
+    cmd_vel_to_pwm(0.0, -1.0);
 }
 
 void direction(){
