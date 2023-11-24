@@ -1,21 +1,29 @@
 /*
 */
 
-#define motor_r_pwm
-#define motor_r_a
-#define motor_r_b
-#define motor_l_pwm
-#define motor_l_a
-#define motor_l_b
-
+#define motor_r_pwm 12
+#define motor_r_a 14 
+#define motor_r_b 27
+#define motor_l_pwm 33
+#define motor_l_a 25
+#define motor_l_b 26
+int val=175;
 
 
 void setup() {
     Serial.begin(115200);
+    stop();
+    Serial.println("Test running!");
+    delay(2000);
 }
 
 void pin_def(){
-
+    pinMode(motor_r_pwm, OUTPUT);
+    pinMode(motor_r_a, OUTPUT);
+    pinMode(motor_r_b, OUTPUT);
+    pinMode(motor_l_pwm, OUTPUT);
+    pinMode(motor_l_a, OUTPUT);
+    pinMode(motor_l_b, OUTPUT);
 }
 
 void loop(){
@@ -31,16 +39,48 @@ void loop(){
 
 void move_forward(){
     Serial.println("Moving Forward");
+
+    digitalWrite(motor_r_a, HIGH);
+    digitalWrite(motor_r_b, LOW);
+    digitalWrite(motor_l_a, HIGH);
+    digitalWrite(motor_l_b, LOW);
+    analogWrite(motor_r_pwm, val);
+    analogWrite(motor_l_pwm, val);
+
 }
 
 void move_backward(){
     Serial.println("Moving Backwards");
+
+    digitalWrite(motor_r_a, LOW);
+    digitalWrite(motor_r_b, HIGH);
+    digitalWrite(motor_l_a, LOW);
+    digitalWrite(motor_l_b, HIGH);
+    analogWrite(motor_r_pwm, val);
+    analogWrite(motor_l_pwm, val);
 }
 
 void move_left(){
     Serial.println("Moving Left");
+    digitalWrite(motor_r_a, HIGH);
+    digitalWrite(motor_r_b, LOW);
+    digitalWrite(motor_l_a, LOW);
+    digitalWrite(motor_l_b, LOW);
+    analogWrite(motor_r_pwm, val);
+    analogWrite(motor_l_pwm, 0);
 }
 
 void move_right(){
     Serial.println("Moving Right");
+    
+    digitalWrite(motor_r_a, LOW);
+    digitalWrite(motor_r_b, LOW);
+    digitalWrite(motor_l_a, HIGH);
+    digitalWrite(motor_l_b, LOW);
+    analogWrite(motor_r_pwm, 0);
+    analogWrite(motor_l_pwm, val);
+}
+void stop(){
+    analogWrite(motor_r_pwm, 0);
+    analogWrite(motor_l_pwm, 0);
 }
