@@ -3,6 +3,8 @@
 
 #define enc_r 1
 #define enc_l 2
+int count_r=0;
+int count_l=0;
 
 ros::NodeHandle  nh;
 
@@ -33,9 +35,9 @@ void pin_definition(){
 }
 
 void Update_encR(){
-
+    count_r ++;
 }
 
 void Update_encL(){
-
+    count_l ++;
 }
