@@ -11,8 +11,8 @@ float left_wheel;
 float right_wheel;
 
 ros::NodeHandle  nh;
-
-ros:ros::Subscriber <geometry_msgs::Twist> sub("/cmd_vel", &cmd_vel_to_pwm_cb);
+void cmd_vel_to_pwm_cb (const geometry_msgs::Twist&velocity_msg);
+ros::Subscriber <geometry_msgs::Twist> sub("/cmd_vel", &cmd_vel_to_pwm_cb);
 
 std_msgs::Int16 enc_r_msg;
 std_msgs::Int16 enc_l_msg;
