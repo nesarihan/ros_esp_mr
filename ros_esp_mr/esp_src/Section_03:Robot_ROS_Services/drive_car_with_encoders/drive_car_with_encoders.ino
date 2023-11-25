@@ -39,7 +39,7 @@ void loop(){
     enc_r_node.publish(&enc_r_msg);
     enc_l_node.publish(&enc_l_msg);
     nh.spinOnce();
-
+    delay(500);
 }
 
 void cmd_vel_to_pwm_cb (const geometry_msgs::Twist&velocity_msg){
