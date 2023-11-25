@@ -31,8 +31,8 @@ void loop(){
 void pin_definition(){
     pinMode(enc_r, INPUT);
     pinMode(enc_l, INPUT);
-    attachInterrupt(ditigalPinToInterrupt(enc_r), Update_encR, CHANGE);
-    attachInterrupt(ditigalPinToInterrupt(enc_l), Update_encL, CHANGE);
+    attachInterrupt(digitalPinToInterrupt(enc_r), Update_encR, CHANGE);
+    attachInterrupt(digitalPinToInterrupt(enc_l), Update_encL, CHANGE);
 
 }
 
