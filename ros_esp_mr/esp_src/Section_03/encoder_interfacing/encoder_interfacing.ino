@@ -22,6 +22,8 @@ void setup(){
 }
 
 void loop(){
+    right_enc.publish(&enc_r_msg);
+    left_enc.publish(&enc_l_msg);
     nh.spinOnce();
 
 }
@@ -35,9 +37,9 @@ void pin_definition(){
 }
 
 void Update_encR(){
-    count_r ++;
+    enc_r_msg.data=count_r ++;
 }
 
 void Update_encL(){
-    count_l ++;
+    enc_l_msg.data=count_l ++;
 }
