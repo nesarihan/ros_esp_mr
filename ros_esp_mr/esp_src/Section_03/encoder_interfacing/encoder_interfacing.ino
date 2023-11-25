@@ -22,8 +22,8 @@ void setup(){
 }
 
 void loop(){
-    right_enc.publish(&enc_r_msg);
-    left_enc.publish(&enc_l_msg);
+    enc_r_node.publish(&enc_r_msg);
+    enc_l_node.publish(&enc_l_msg);
     nh.spinOnce();
 
 }
